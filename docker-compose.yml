@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  server:
+    image: postgres:11
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=psw
+      - POSTGRES_USER=jcanabal
+      - POSTGRES_BD=aerolineadb
+      - DATABASE_HOST=127.0.0.1
+    ports:
+      - "5432:5432"
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+     - PGADMIN_DEFAULT_EMAIL=foncendorm@gmail.com
+     - PGADMIN_DEFAULT_PASSWORD=psw
+    ports:
+      - "8080:80"
+    depends_on:
+      - server
+
